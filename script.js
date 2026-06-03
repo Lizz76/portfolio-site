@@ -492,22 +492,33 @@ function observeArticleHeadings() {
     tocObserver.disconnect();
   }
   const headings = articleContent.querySelectorAll("h2[id], h3[id], h4[id]");
-  if (!headings.length) return;
   const scrollContainer = articleContent.closest(".article-main");
+  if (!headings.length || !scrollContainer) return;
 
-  tocObserver = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-      if (!visible) return;
-      articleToc
-        .querySelectorAll(".toc-link")
-        .forEach((link) => link.classList.toggle("is-active", link.dataset.target === visible.target.id));
-    },
-    { root: scrollContainer, rootMargin: "-10% 0px -60% 0px" },
-  );
-  headings.forEach((heading) => tocObserver.observe(heading));
+  const links = articleToc.querySelectorAll(".toc-link");
+
+  function updateActive() {
+    const threshold = scrollContainer.scrollTop + 80;
+    let activeId = null;
+
+    for (const heading of headings) {
+      const rect = heading.getBoundingClientRect();
+      const containerRect = scrollContainer.getBoundingClientRect();
+      const headingTop = rect.top - containerRect.top + scrollContainer.scrollTop;
+      if (headingTop <= threshold) {
+        activeId = heading.id;
+      }
+    }
+
+    links.forEach((link) => {
+      link.classList.toggle("is-active", link.dataset.target === activeId);
+    });
+  }
+
+  scrollContainer.addEventListener("scroll", updateActive, { passive: true });
+  updateActive();
+
+  tocObserver = { disconnect: () => scrollContainer.removeEventListener("scroll", updateActive) };
 }
 
 async function loadArticleMarkdown(article) {
