@@ -196,10 +196,11 @@ const dialogTags = document.querySelector("#dialogTags");
 const dialogShots = document.querySelector("#dialogShots");
 const dialogExternal = document.querySelector("#dialogExternal");
 const closeButton = document.querySelector(".dialog-close");
-const articleDialog = document.querySelector("#articleDialog");
-const articleContent = document.querySelector("#articleDialogContent");
+const articleView = document.querySelector("#articleView");
+const articleTitle = document.querySelector("#articleTitle");
+const articleContent = document.querySelector("#articleContent");
 const articleToc = document.querySelector("#articleToc");
-const articleClose = document.querySelector("#articleClose");
+const articleBack = document.querySelector("#articleBack");
 
 let tocObserver;
 
@@ -503,7 +504,7 @@ function observeArticleHeadings() {
         .querySelectorAll(".toc-link")
         .forEach((link) => link.classList.toggle("is-active", link.dataset.target === visible.target.id));
     },
-    { root: articleContent, rootMargin: "-20% 0px -70% 0px" },
+    { rootMargin: "-20% 0px -70% 0px" },
   );
   headings.forEach((heading) => tocObserver.observe(heading));
 }
@@ -530,34 +531,24 @@ async function openArticleById(articleId, updateHash = true) {
   const article = breakdowns.find((item) => item.id === articleId);
   if (!article) return;
 
-  articleContent.innerHTML = `
-    <p class="eyebrow">Markdown Article</p>
-    <h2>${escapeHtml(article.title)}</h2>
-    <div class="article-loading">文章加载中...</div>
-  `;
+  articleView.hidden = false;
+  articleTitle.textContent = article.title;
+  articleContent.innerHTML = '<p class="article-loading">文章加载中...</p>';
   articleToc.innerHTML = '<p class="toc-empty">目录生成中...</p>';
 
-  articleDialog.showModal();
+  articleView.scrollIntoView({ behavior: "smooth", block: "start" });
 
   try {
     const markdown = await loadArticleMarkdown(article);
     const rendered = parseMarkdown(markdown, article.title);
-    articleContent.innerHTML = `
-      <p class="eyebrow">Markdown Article</p>
-      <h2>${escapeHtml(article.title)}</h2>
-      <div class="article-body">${rendered.html}</div>
-    `;
+    articleContent.innerHTML = rendered.html;
     renderToc(rendered.toc);
     observeArticleHeadings();
     if (updateHash) {
       history.replaceState(null, "", `#article-${article.id}`);
     }
   } catch (error) {
-    articleContent.innerHTML = `
-      <p class="eyebrow">Markdown Article</p>
-      <h2>${escapeHtml(article.title)}</h2>
-      <p class="article-error">文章加载失败：${escapeHtml(error.message)}</p>
-    `;
+    articleContent.innerHTML = `<p class="article-error">文章加载失败：${escapeHtml(error.message)}</p>`;
     articleToc.innerHTML = '<p class="toc-empty">暂无目录</p>';
   }
 }
@@ -635,20 +626,11 @@ articleToc.addEventListener("click", (event) => {
   }
 });
 
-articleClose.addEventListener("click", () => {
-  articleDialog.close();
+articleBack.addEventListener("click", () => {
+  articleView.hidden = true;
+  if (tocObserver) tocObserver.disconnect();
   history.replaceState(null, "", "#breakdowns");
   document.querySelector("#breakdowns")?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-articleDialog.addEventListener("click", (event) => {
-  const rect = articleDialog.getBoundingClientRect();
-  const isOutside =
-    event.clientX < rect.left ||
-    event.clientX > rect.right ||
-    event.clientY < rect.top ||
-    event.clientY > rect.bottom;
-  if (isOutside) articleDialog.close();
 });
 
 dialogShots.addEventListener("click", (event) => {
