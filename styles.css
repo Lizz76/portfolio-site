@@ -617,8 +617,9 @@ h3 {
 
 .toc-link {
   display: block;
-  padding: 7px 10px;
+  padding: 6px 10px 6px 12px;
   border-left: 3px solid transparent;
+  margin-left: 6px;
   border-radius: 0 6px 6px 0;
   color: var(--ink-soft);
   font-size: 0.86rem;
@@ -641,13 +642,19 @@ h3 {
   font-weight: 800;
 }
 
+.toc-level-2 {
+  padding-left: 10px;
+}
+
 .toc-level-3 {
-  padding-left: 20px;
+  padding-left: 24px;
+  font-size: 0.83rem;
 }
 
 .toc-level-4 {
-  padding-left: 34px;
-  font-size: 0.8rem;
+  padding-left: 38px;
+  font-size: 0.79rem;
+  color: var(--ink-soft);
 }
 
 .article-main {
@@ -1034,9 +1041,17 @@ h3 {
     border-color: var(--coral);
   }
 
-  .toc-level-3,
+  .toc-level-2 {
+    padding-left: 6px;
+  }
+
+  .toc-level-3 {
+    padding-left: 20px;
+  }
+
   .toc-level-4 {
-    padding-left: 10px;
+    padding-left: 34px;
+    font-size: 0.8rem;
   }
 
   .article-main {
