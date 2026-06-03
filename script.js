@@ -191,7 +191,6 @@ const dialogMedia = document.querySelector("#dialogMedia");
 const dialogMeta = document.querySelector("#dialogMeta");
 const dialogTitle = document.querySelector("#dialogTitle");
 const dialogSummary = document.querySelector("#dialogSummary");
-const dialogDetails = document.querySelector("#dialogDetails");
 const dialogTags = document.querySelector("#dialogTags");
 const dialogShots = document.querySelector("#dialogShots");
 const dialogExternal = document.querySelector("#dialogExternal");
@@ -614,10 +613,6 @@ function openProject(projectId) {
   dialogMeta.textContent = `${project.type} / ${project.duration}`;
   dialogTitle.textContent = project.title;
   dialogSummary.textContent = project.summary;
-  dialogDetails.innerHTML = `
-    <dt>职责</dt>
-    <dd>${escapeHtml(project.role)}</dd>
-  `;
   dialogTags.innerHTML = project.tags
     .map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`)
     .join("");
