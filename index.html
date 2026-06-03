@@ -81,33 +81,23 @@
       <section class="section-band section-band-muted" id="breakdowns">
         <div class="section-heading">
           <p class="eyebrow">Design Breakdown</p>
-          <h2>拆解案与文档</h2>
+          <h2>策划案与拆解案</h2>
         </div>
         <div class="breakdown-grid" id="breakdownGrid"></div>
       </section>
 
-      <section class="article-section" id="articleView" hidden>
-        <div class="article-layout">
-          <article class="article-main">
-            <div class="article-toolbar">
-              <button class="article-back" id="articleBack" type="button">
-                返回文档列表
-              </button>
-              <div class="article-downloads">
-                <a id="articlePdf" href="#" download>PDF</a>
-                <a id="articleDocx" href="#" download>DOCX</a>
-              </div>
-            </div>
-            <p class="eyebrow">Markdown Article</p>
-            <h2 id="articleTitle">文章标题</h2>
-            <div class="article-content" id="articleContent"></div>
-          </article>
-          <aside class="article-toc-panel" aria-label="文章目录">
+      <dialog class="article-dialog" id="articleDialog">
+        <button class="dialog-close" type="button" aria-label="关闭文章" id="articleClose">×</button>
+        <div class="article-dialog-body">
+          <div class="article-dialog-main article-content" id="articleDialogContent">
+            <p class="article-loading">文章加载中...</p>
+          </div>
+          <aside class="article-dialog-toc" aria-label="文章目录">
             <div class="toc-title">目录</div>
             <nav class="article-toc" id="articleToc"></nav>
           </aside>
         </div>
-      </section>
+      </dialog>
 
       <section class="contact-band" id="contact">
         <div>

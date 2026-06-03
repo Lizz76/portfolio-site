@@ -196,13 +196,10 @@ const dialogTags = document.querySelector("#dialogTags");
 const dialogShots = document.querySelector("#dialogShots");
 const dialogExternal = document.querySelector("#dialogExternal");
 const closeButton = document.querySelector(".dialog-close");
-const articleView = document.querySelector("#articleView");
-const articleTitle = document.querySelector("#articleTitle");
-const articleContent = document.querySelector("#articleContent");
+const articleDialog = document.querySelector("#articleDialog");
+const articleContent = document.querySelector("#articleDialogContent");
 const articleToc = document.querySelector("#articleToc");
-const articleBack = document.querySelector("#articleBack");
-const articlePdf = document.querySelector("#articlePdf");
-const articleDocx = document.querySelector("#articleDocx");
+const articleClose = document.querySelector("#articleClose");
 
 let tocObserver;
 
@@ -506,7 +503,7 @@ function observeArticleHeadings() {
         .querySelectorAll(".toc-link")
         .forEach((link) => link.classList.toggle("is-active", link.dataset.target === visible.target.id));
     },
-    { rootMargin: "-20% 0px -70% 0px" },
+    { root: articleContent, rootMargin: "-20% 0px -70% 0px" },
   );
   headings.forEach((heading) => tocObserver.observe(heading));
 }
@@ -533,25 +530,34 @@ async function openArticleById(articleId, updateHash = true) {
   const article = breakdowns.find((item) => item.id === articleId);
   if (!article) return;
 
-  articleView.hidden = false;
-  articleTitle.textContent = article.title;
-  articleContent.innerHTML = '<p class="article-loading">文章加载中...</p>';
+  articleContent.innerHTML = `
+    <p class="eyebrow">Markdown Article</p>
+    <h2>${escapeHtml(article.title)}</h2>
+    <div class="article-loading">文章加载中...</div>
+  `;
   articleToc.innerHTML = '<p class="toc-empty">目录生成中...</p>';
-  articlePdf.href = article.pdfUrl;
-  articleDocx.href = article.docUrl;
+
+  articleDialog.showModal();
 
   try {
     const markdown = await loadArticleMarkdown(article);
     const rendered = parseMarkdown(markdown, article.title);
-    articleContent.innerHTML = rendered.html;
+    articleContent.innerHTML = `
+      <p class="eyebrow">Markdown Article</p>
+      <h2>${escapeHtml(article.title)}</h2>
+      <div class="article-body">${rendered.html}</div>
+    `;
     renderToc(rendered.toc);
     observeArticleHeadings();
-    articleView.scrollIntoView({ behavior: "smooth", block: "start" });
     if (updateHash) {
       history.replaceState(null, "", `#article-${article.id}`);
     }
   } catch (error) {
-    articleContent.innerHTML = `<p class="article-error">文章加载失败：${escapeHtml(error.message)}</p>`;
+    articleContent.innerHTML = `
+      <p class="eyebrow">Markdown Article</p>
+      <h2>${escapeHtml(article.title)}</h2>
+      <p class="article-error">文章加载失败：${escapeHtml(error.message)}</p>
+    `;
     articleToc.innerHTML = '<p class="toc-empty">暂无目录</p>';
   }
 }
@@ -623,13 +629,26 @@ articleToc.addEventListener("click", (event) => {
   const link = event.target.closest("[data-target]");
   if (!link) return;
   event.preventDefault();
-  document.getElementById(link.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const target = document.getElementById(link.dataset.target);
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 });
 
-articleBack.addEventListener("click", () => {
-  articleView.hidden = true;
+articleClose.addEventListener("click", () => {
+  articleDialog.close();
   history.replaceState(null, "", "#breakdowns");
   document.querySelector("#breakdowns")?.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+articleDialog.addEventListener("click", (event) => {
+  const rect = articleDialog.getBoundingClientRect();
+  const isOutside =
+    event.clientX < rect.left ||
+    event.clientX > rect.right ||
+    event.clientY < rect.top ||
+    event.clientY > rect.bottom;
+  if (isOutside) articleDialog.close();
 });
 
 dialogShots.addEventListener("click", (event) => {
