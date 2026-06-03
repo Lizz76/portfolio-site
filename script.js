@@ -286,6 +286,7 @@ function parseMarkdown(markdown, title) {
   let index = 0;
   let skippedTitle = false;
   let skippedLeadTitle = false;
+  const counters = { h2: 0, h3: 0, h4: 0 };
 
   while (index < lines.length) {
     const line = lines[index];
@@ -321,7 +322,21 @@ function parseMarkdown(markdown, title) {
       const safeHeading = renderInlineMarkdown(headingText);
       html.push(`<h${level} id="${id}">${safeHeading}</h${level}>`);
       if (level >= 2) {
-        toc.push({ id, level, text: headingText });
+        if (level === 2) {
+          counters.h2 += 1;
+          counters.h3 = 0;
+          counters.h4 = 0;
+        } else if (level === 3) {
+          counters.h3 += 1;
+          counters.h4 = 0;
+        } else if (level === 4) {
+          counters.h4 += 1;
+        }
+        const num =
+          level === 2 ? `${counters.h2}` :
+          level === 3 ? `${counters.h2}.${counters.h3}` :
+          `${counters.h2}.${counters.h3}.${counters.h4}`;
+        toc.push({ id, level, text: headingText, num });
       }
       index += 1;
       continue;
@@ -480,7 +495,7 @@ function renderToc(toc) {
     .map(
       (item) => `
         <a class="toc-link toc-level-${item.level}" href="#${escapeHtml(item.id)}" data-target="${escapeHtml(item.id)}">
-          ${escapeHtml(item.text)}
+          <span class="toc-num">${escapeHtml(item.num)}</span>${escapeHtml(item.text)}
         </a>
       `,
     )

@@ -617,14 +617,28 @@ h3 {
 
 .toc-link {
   display: block;
-  padding: 6px 10px 6px 12px;
+  padding: 6px 12px 6px 10px;
   border-left: 3px solid transparent;
-  margin-left: 6px;
   border-radius: 0 6px 6px 0;
   color: var(--ink-soft);
   font-size: 0.86rem;
-  line-height: 1.35;
+  line-height: 1.45;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.toc-num {
+  display: inline-block;
+  min-width: 24px;
+  margin-right: 6px;
+  color: var(--line-strong);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.toc-link:hover .toc-num,
+.toc-link:focus-visible .toc-num,
+.toc-link.is-active .toc-num {
+  color: inherit;
 }
 
 .toc-link:hover,
@@ -643,16 +657,16 @@ h3 {
 }
 
 .toc-level-2 {
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 .toc-level-3 {
-  padding-left: 24px;
+  padding-left: 26px;
   font-size: 0.83rem;
 }
 
 .toc-level-4 {
-  padding-left: 38px;
+  padding-left: 44px;
   font-size: 0.79rem;
   color: var(--ink-soft);
 }
@@ -1052,6 +1066,12 @@ h3 {
   .toc-level-4 {
     padding-left: 34px;
     font-size: 0.8rem;
+  }
+
+  .toc-num {
+    min-width: 20px;
+    margin-right: 4px;
+    font-size: 0.74rem;
   }
 
   .article-main {
