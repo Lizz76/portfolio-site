@@ -518,7 +518,7 @@ function observeArticleHeadings() {
     });
 
     if (activeLink) {
-      activeLink.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      activeLink.scrollIntoView({ block: "center", behavior: "smooth" });
     }
   }
 
