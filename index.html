@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>李志晟 - 游戏策划作品集</title>
+    <meta
+      name="description"
+      content="李志晟的游戏策划作品集：系统策划、关卡设计、玩法拆解案、项目经历与可交付文档。"
+    />
+    <link rel="stylesheet" href="styles.css?v=14" />
+    <script defer src="article-data.js?v=14"></script>
+    <script defer src="script.js?v=14"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark" aria-hidden="true">
+            <img src="assets/avatar.jpg" alt="李志晟头像" class="brand-avatar" />
+          </span>
+        <span class="brand-copy">
+          <strong>李志晟</strong>
+          <small>Game Planner Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#projects">作品</a>
+        <a href="#breakdowns">拆解案</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img
+          class="hero-image"
+          src="assets/hero-bg-new.png"
+          alt="游戏项目截图蒙太奇"
+        />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <h1>李志晟</h1>
+          <p class="hero-lead">
+            这里沉淀我做过的游戏项目、系统方案、关卡原型、体验拆解和可交付文档。
+          </p>
+          <div class="hero-actions" aria-label="作品集入口">
+            <a class="button button-primary" href="#projects">项目作品</a>
+            <a class="button button-secondary" href="#breakdowns">拆解案</a>
+          </div>
+          <p class="hero-scroll-tip">↓ 下滑查看</p>
+        </div>
+      </section>
+
+      <section class="section-band" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Work</p>
+          <h2>游戏项目</h2>
+        </div>
+
+        <div class="filter-bar" aria-label="项目筛选">
+          <button class="filter-button is-active" type="button" data-filter="all">
+            全部
+          </button>
+          <button class="filter-button" type="button" data-filter="puzzle">
+            解谜
+          </button>
+          <button class="filter-button" type="button" data-filter="combat">
+            战斗
+          </button>
+          <button class="filter-button" type="button" data-filter="adventure">
+            冒险
+          </button>
+          <button class="filter-button" type="button" data-filter="strategy">
+            策略
+          </button>
+        </div>
+
+        <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="section-band section-band-muted" id="breakdowns">
+        <div class="section-heading">
+          <p class="eyebrow">Design Breakdown</p>
+          <h2>拆解案与文档</h2>
+        </div>
+        <div class="breakdown-grid" id="breakdownGrid"></div>
+      </section>
+
+      <section class="article-section" id="articleView" hidden>
+        <div class="article-layout">
+          <article class="article-main">
+            <div class="article-toolbar">
+              <button class="article-back" id="articleBack" type="button">
+                返回文档列表
+              </button>
+              <div class="article-downloads">
+                <a id="articlePdf" href="#" download>PDF</a>
+                <a id="articleDocx" href="#" download>DOCX</a>
+              </div>
+            </div>
+            <p class="eyebrow">Markdown Article</p>
+            <h2 id="articleTitle">文章标题</h2>
+            <div class="article-content" id="articleContent"></div>
+          </article>
+          <aside class="article-toc-panel" aria-label="文章目录">
+            <div class="toc-title">目录</div>
+            <nav class="article-toc" id="articleToc"></nav>
+          </aside>
+        </div>
+      </section>
+
+      <section class="contact-band" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>李志晟</h2>
+          <p>游戏策划方向：系统策划、关卡设计、玩法拆解、AI 策划工作流。</p>
+          <div class="contact-meta" aria-label="联系方式">
+            <span>邮箱：lzs13599067229@gmail.com</span>
+            <span>微信：LZS200576</span>
+            <span>
+              B站：<a href="https://space.bilibili.com/80632239" target="_blank" rel="noreferrer">https://space.bilibili.com/80632239</a>
+            </span>
+            <span>
+              GitHub：<a href="https://github.com/Lizz76" target="_blank" rel="noreferrer">https://github.com/Lizz76</a>
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="project-dialog" id="projectDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-body">
+        <button class="dialog-close" type="button" aria-label="关闭详情">×</button>
+        <div
+          class="dialog-media"
+          id="dialogMedia"
+          role="img"
+          aria-label="项目截图占位"
+        ></div>
+        <div class="dialog-copy">
+          <p class="eyebrow" id="dialogMeta">Project</p>
+          <h2 id="dialogTitle">项目标题</h2>
+          <p id="dialogSummary"></p>
+          <dl class="detail-list" id="dialogDetails"></dl>
+          <div class="tag-row" id="dialogTags"></div>
+          <div class="screenshot-strip" id="dialogShots" aria-label="项目截图"></div>
+          <div class="dialog-actions">
+            <a class="button button-primary" id="dialogExternal" href="#" target="_blank" rel="noreferrer">
+              项目链接
+            </a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+  </body>
+</html>
