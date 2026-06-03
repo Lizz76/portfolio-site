@@ -493,6 +493,7 @@ function observeArticleHeadings() {
   }
   const headings = articleContent.querySelectorAll("h2[id], h3[id], h4[id]");
   if (!headings.length) return;
+  const scrollContainer = articleContent.closest(".article-main");
 
   tocObserver = new IntersectionObserver(
     (entries) => {
@@ -504,7 +505,7 @@ function observeArticleHeadings() {
         .querySelectorAll(".toc-link")
         .forEach((link) => link.classList.toggle("is-active", link.dataset.target === visible.target.id));
     },
-    { rootMargin: "-20% 0px -70% 0px" },
+    { root: scrollContainer, rootMargin: "-10% 0px -60% 0px" },
   );
   headings.forEach((heading) => tocObserver.observe(heading));
 }
