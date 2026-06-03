@@ -500,6 +500,7 @@ function observeArticleHeadings() {
   function updateActive() {
     const threshold = scrollContainer.scrollTop + 80;
     let activeId = null;
+    let activeLink = null;
 
     for (const heading of headings) {
       const rect = heading.getBoundingClientRect();
@@ -511,8 +512,14 @@ function observeArticleHeadings() {
     }
 
     links.forEach((link) => {
-      link.classList.toggle("is-active", link.dataset.target === activeId);
+      const isActive = link.dataset.target === activeId;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) activeLink = link;
     });
+
+    if (activeLink) {
+      activeLink.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
   }
 
   scrollContainer.addEventListener("scroll", updateActive, { passive: true });
