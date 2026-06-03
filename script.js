@@ -332,10 +332,22 @@ function parseMarkdown(markdown, title) {
         } else if (level === 4) {
           counters.h4 += 1;
         }
-        const num =
-          level === 2 ? `${counters.h2}` :
-          level === 3 ? `${counters.h2}.${counters.h3}` :
-          `${counters.h2}.${counters.h3}.${counters.h4}`;
+        let num;
+        if (level === 2) {
+          num = String(counters.h2);
+        } else if (level === 3) {
+          num = counters.h2 ? `${counters.h2}.${counters.h3}` : String(counters.h3);
+        } else {
+          if (counters.h2 && counters.h3) {
+            num = `${counters.h2}.${counters.h3}.${counters.h4}`;
+          } else if (counters.h2) {
+            num = `${counters.h2}.${counters.h4}`;
+          } else if (counters.h3) {
+            num = `${counters.h3}.${counters.h4}`;
+          } else {
+            num = String(counters.h4);
+          }
+        }
         toc.push({ id, level, text: headingText, num });
       }
       index += 1;
