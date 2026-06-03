@@ -574,10 +574,6 @@ function openProject(projectId) {
   dialogDetails.innerHTML = `
     <dt>职责</dt>
     <dd>${escapeHtml(project.role)}</dd>
-    <dt>交付物</dt>
-    <dd>${escapeHtml(project.deliverables)}</dd>
-    <dt>设计重点</dt>
-    <dd>${escapeHtml(project.highlight)}</dd>
   `;
   dialogTags.innerHTML = project.tags
     .map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`)
