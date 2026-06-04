@@ -729,7 +729,7 @@ articleToc.addEventListener("click", (event) => {
 articleBack.addEventListener("click", () => {
   articleView.hidden = true;
   if (tocObserver) tocObserver.disconnect();
-  history.replaceState(null, "", "#breakdowns");
+  history.replaceState(null, "", `${location.pathname}${location.search}`);
   document.querySelector("#breakdowns")?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
@@ -758,6 +758,11 @@ dialog.addEventListener("click", (event) => {
 
 renderProjects();
 renderBreakdowns();
+
+if (location.hash === "#breakdowns") {
+  history.replaceState(null, "", `${location.pathname}${location.search}`);
+  requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
+}
 
 const initialArticleId = location.hash.startsWith("#article-")
   ? location.hash.replace("#article-", "")
