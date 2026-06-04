@@ -50,6 +50,16 @@ const projects = [
     tags: ["2D 联机", "对战射击", "影子机制", "GMHub"],
     externalUrl: "https://www.gmhub.com/game/9184",
     externalLabel: "GMHub 项目页",
+    links: [
+      {
+        label: "GMHub 项目页",
+        url: "https://www.gmhub.com/game/9184",
+      },
+      {
+        label: "B站展示视频",
+        url: "https://www.bilibili.com/video/BV1SqfRBQEyj/",
+      },
+    ],
   },
   {
     id: "paper-knight",
