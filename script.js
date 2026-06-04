@@ -65,6 +65,36 @@ const projects = [
     ],
   },
   {
+    id: "light-vein-valley",
+    title: "光脉谷地",
+    type: "2D 平台跳跃冒险",
+    category: "adventure-rpg",
+    image: "assets/games/light-vein-valley-cover.jpg",
+    screenshots: [
+      "assets/games/light-vein-valley-cover.jpg",
+      "assets/games/light-vein-valley-shot-1.jpg",
+      "assets/games/light-vein-valley-shot-2.jpg",
+      "assets/games/light-vein-valley-shot-3.jpg",
+      "assets/games/light-vein-valley-shot-4.jpg",
+      "assets/games/light-vein-valley-shot-5.jpg",
+    ],
+    summary:
+      "一款 2D 平台跳跃类游戏，在极度缺乏光能的地下世界中，主角为了收集光脉草踏上冒险。",
+    role: "待补充：你的具体策划职责",
+    duration: "TapTap 聚光灯 GameJam / BlackField",
+    deliverables: "TapTap 商店页、封面与 5 张游戏截图；策划案或复盘文档待补充。",
+    highlight: "待补充：光能机制、平台跳跃节奏、关卡引导或原型迭代亮点。",
+    tags: ["2D 平台", "跳跃冒险", "光能机制", "TapTap"],
+    externalUrl: "https://www.taptap.cn/app/726247?os=pc",
+    externalLabel: "TapTap 商店页",
+    links: [
+      {
+        label: "TapTap 商店页",
+        url: "https://www.taptap.cn/app/726247?os=pc",
+      },
+    ],
+  },
+  {
     id: "hide-shadow",
     title: "藏好影子",
     type: "2D 联机对战射击",
