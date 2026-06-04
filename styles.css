@@ -992,6 +992,19 @@ h3 {
   background-size: contain;
 }
 
+.dialog-media[data-media="video"] {
+  display: grid;
+  place-items: center;
+  background-image: none;
+}
+
+.dialog-video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--night);
+}
+
 .dialog-copy {
   overflow-y: auto;
   max-height: calc(100vh - 28px);
@@ -1016,6 +1029,7 @@ h3 {
 }
 
 .screenshot-button {
+  position: relative;
   min-height: 84px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -1024,6 +1038,18 @@ h3 {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+}
+
+.screenshot-button.is-video::before {
+  content: "▶";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(22, 21, 18, 0.42);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 900;
 }
 
 .screenshot-button:hover,

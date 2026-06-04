@@ -631,8 +631,33 @@ async function openArticleById(articleId, updateHash = true) {
 }
 
 function setDialogImage(src) {
+  dialogMedia.innerHTML = "";
+  dialogMedia.dataset.media = "image";
   dialogMedia.dataset.crop = "cover";
   dialogMedia.style.setProperty("--dialog-image", `url("${src}")`);
+}
+
+function getBilibiliEmbedUrl(url) {
+  const match = String(url || "").match(/BV[0-9A-Za-z]+/);
+  if (!match) return "";
+  return `https://player.bilibili.com/player.html?bvid=${match[0]}&page=1&high_quality=1&danmaku=0&autoplay=0`;
+}
+
+function setDialogVideo(embedUrl, title) {
+  dialogMedia.dataset.media = "video";
+  dialogMedia.dataset.crop = "contain";
+  dialogMedia.style.removeProperty("--dialog-image");
+  dialogMedia.innerHTML = `
+    <iframe
+      class="dialog-video"
+      src="${escapeHtml(safeUrl(embedUrl))}"
+      title="${escapeHtml(title)}"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  `;
 }
 
 function getProjectLinks(project) {
@@ -650,28 +675,59 @@ function getProjectLinks(project) {
   return [];
 }
 
+function getProjectVideo(project) {
+  return getProjectLinks(project).find((link) => getBilibiliEmbedUrl(link.url));
+}
+
+function getProjectMediaItems(project) {
+  const video = getProjectVideo(project);
+  return [
+    ...(video
+      ? [
+          {
+            type: "video",
+            src: getBilibiliEmbedUrl(video.url),
+            thumb: project.image,
+            label: video.label || "B站展示视频",
+          },
+        ]
+      : []),
+    ...project.screenshots.map((src, index) => ({
+      type: "image",
+      src,
+      label: `截图 ${index + 1}`,
+    })),
+  ];
+}
+
 function openProject(projectId) {
   const project = projects.find((item) => item.id === projectId);
   if (!project) return;
 
-  const mainImage = project.screenshots[0] || project.image;
-  setDialogImage(mainImage);
-  dialogMedia.setAttribute("aria-label", `${project.title} 项目截图`);
+  const mediaItems = getProjectMediaItems(project);
+  const firstMedia = mediaItems[0] || { type: "image", src: project.image, label: "项目封面" };
+  if (firstMedia.type === "video") {
+    setDialogVideo(firstMedia.src, `${project.title} B站展示视频`);
+  } else {
+    setDialogImage(firstMedia.src);
+  }
+  dialogMedia.setAttribute("aria-label", `${project.title} 项目媒体`);
   dialogMeta.textContent = `${project.type} / ${project.duration}`;
   dialogTitle.textContent = project.title;
   dialogSummary.textContent = project.summary;
   dialogTags.innerHTML = project.tags
     .map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`)
     .join("");
-  dialogShots.innerHTML = project.screenshots
+  dialogShots.innerHTML = mediaItems
     .map(
-      (src, index) => `
+      (item, index) => `
         <button
-          class="screenshot-button ${index === 0 ? "is-active" : ""}"
+          class="screenshot-button ${item.type === "video" ? "is-video" : ""} ${index === 0 ? "is-active" : ""}"
           type="button"
-          data-image="${escapeHtml(src)}"
-          aria-label="${escapeHtml(project.title)} 截图 ${index + 1}"
-          style="background-image: url('${escapeHtml(src)}')"
+          data-media-type="${escapeHtml(item.type)}"
+          data-media-src="${escapeHtml(item.src)}"
+          aria-label="${escapeHtml(project.title)} ${escapeHtml(item.label)}"
+          ${item.thumb || item.type === "image" ? `style="background-image: url('${escapeHtml(item.thumb || item.src)}')"` : ""}
         ></button>
       `,
     )
@@ -734,16 +790,24 @@ articleBack.addEventListener("click", () => {
 });
 
 dialogShots.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-image]");
+  const button = event.target.closest("[data-media-type]");
   if (!button) return;
   dialogShots
     .querySelectorAll(".screenshot-button")
     .forEach((item) => item.classList.remove("is-active"));
   button.classList.add("is-active");
-  setDialogImage(button.dataset.image);
+  if (button.dataset.mediaType === "video") {
+    setDialogVideo(button.dataset.mediaSrc, `${dialogTitle.textContent} B站展示视频`);
+  } else {
+    setDialogImage(button.dataset.mediaSrc);
+  }
 });
 
 closeButton.addEventListener("click", () => dialog.close());
+
+dialog.addEventListener("close", () => {
+  dialogMedia.innerHTML = "";
+});
 
 dialog.addEventListener("click", (event) => {
   const rect = dialog.getBoundingClientRect();
