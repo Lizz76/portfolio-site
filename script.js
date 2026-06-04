@@ -14,7 +14,7 @@ const projects = [
       "玩家扮演一个不注意个人卫生的小男孩，在梦中释放清洁泡泡、攻击病菌，并解放被绑架的小狗。",
     role: "待补充：你的具体策划职责",
     duration: "2025 / BlackField",
-    deliverables: "GMHub 项目页、封面、3 张截图；策划案或拆解案待补充。",
+    deliverables: "GMHub 项目页、封面、3 张截图；策划案或复盘文档待补充。",
     highlight: "待补充：核心玩法、关卡节奏、系统设计或迭代亮点。",
     tags: ["2D 休闲", "街机动作", "泡泡攻击", "GMHub"],
     externalUrl: "https://www.gmhub.com/game/6838",
