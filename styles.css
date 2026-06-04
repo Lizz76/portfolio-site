@@ -280,6 +280,19 @@ h3 {
   outline: none;
 }
 
+.button-outline {
+  border-color: var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+}
+
+.button-outline:hover,
+.button-outline:focus-visible {
+  border-color: var(--coral);
+  color: var(--coral);
+  outline: none;
+}
+
 .button-secondary {
   border-color: rgba(255, 255, 255, 0.46);
   background: rgba(255, 255, 255, 0.08);
@@ -516,27 +529,36 @@ h3 {
 }
 
 .doc-actions {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 .doc-link,
+.doc-secondary,
 .doc-download {
   display: inline-flex;
   min-height: 38px;
   align-items: center;
   justify-content: center;
+  flex: 1 1 108px;
   border: 1px solid var(--ink);
   border-radius: 6px;
-  background: var(--ink);
-  color: #fff;
+  padding: 7px 12px;
   cursor: pointer;
   font-weight: 800;
+  line-height: 1.1;
+}
+
+.doc-link {
+  background: var(--ink);
+  color: #fff;
 }
 
 .doc-link:hover,
 .doc-link:focus-visible,
+.doc-secondary:hover,
+.doc-secondary:focus-visible,
 .doc-download:hover,
 .doc-download:focus-visible {
   border-color: var(--teal-deep);
@@ -544,8 +566,8 @@ h3 {
   outline: none;
 }
 
+.doc-secondary,
 .doc-download {
-  min-width: 70px;
   border-color: var(--line-strong);
   background: transparent;
   color: var(--ink);
@@ -616,7 +638,9 @@ h3 {
 }
 
 .toc-link {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
   padding: 6px 12px 6px 10px;
   border-left: 3px solid transparent;
   border-radius: 0 6px 6px 0;
@@ -627,12 +651,15 @@ h3 {
 }
 
 .toc-num {
-  display: inline-block;
-  min-width: 24px;
-  margin-right: 6px;
+  flex: 0 0 auto;
   color: var(--line-strong);
   font-weight: 700;
   font-size: 0.78rem;
+}
+
+.toc-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .toc-link:hover .toc-num,
@@ -656,18 +683,30 @@ h3 {
   font-weight: 800;
 }
 
-.toc-level-2 {
+.toc-level-1 {
   padding-left: 8px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.toc-level-2 {
+  padding-left: 24px;
 }
 
 .toc-level-3 {
-  padding-left: 26px;
+  padding-left: 40px;
   font-size: 0.83rem;
 }
 
 .toc-level-4 {
-  padding-left: 44px;
+  padding-left: 56px;
   font-size: 0.79rem;
+  color: var(--ink-soft);
+}
+
+.toc-level-5 {
+  padding-left: 72px;
+  font-size: 0.77rem;
   color: var(--ink-soft);
 }
 
@@ -994,6 +1033,8 @@ h3 {
 
 .dialog-actions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 22px;
 }
 
@@ -1021,39 +1062,44 @@ h3 {
   }
 
   .article-toc {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    display: grid;
+    gap: 2px;
   }
 
   .toc-link {
     padding: 5px 10px;
-    border-left: none;
-    border: 1px solid var(--line);
-    border-radius: 6px;
+    border-left: 3px solid transparent;
+    border-radius: 0 6px 6px 0;
     font-size: 0.82rem;
   }
 
   .toc-link.is-active {
-    border-color: var(--coral);
+    border-left-color: var(--coral);
   }
 
-  .toc-level-2 {
+  .toc-level-1 {
     padding-left: 6px;
   }
 
-  .toc-level-3 {
+  .toc-level-2 {
     padding-left: 20px;
   }
 
-  .toc-level-4 {
+  .toc-level-3 {
     padding-left: 34px;
+  }
+
+  .toc-level-4 {
+    padding-left: 48px;
     font-size: 0.8rem;
   }
 
+  .toc-level-5 {
+    padding-left: 62px;
+    font-size: 0.78rem;
+  }
+
   .toc-num {
-    min-width: 20px;
-    margin-right: 4px;
     font-size: 0.74rem;
   }
 
@@ -1149,10 +1195,6 @@ h3 {
   .button,
   .card-button {
     width: 100%;
-  }
-
-  .doc-actions {
-    grid-template-columns: 1fr;
   }
 
   .article-main > h2 {

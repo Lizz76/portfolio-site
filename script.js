@@ -2,8 +2,8 @@ const projects = [
   {
     id: "bubbledream",
     title: "BubbleDream",
-    type: "清洁泡泡动作冒险",
-    category: "combat",
+    type: "2D 休闲街机动作",
+    category: "casual-action",
     image: "assets/games/bubbledream-cover.png",
     screenshots: [
       "assets/games/bubbledream-shot-1.png",
@@ -16,36 +16,25 @@ const projects = [
     duration: "2025 / BlackField",
     deliverables: "GMHub 项目页、封面、3 张截图；策划案或拆解案待补充。",
     highlight: "待补充：核心玩法、关卡节奏、系统设计或迭代亮点。",
-    tags: ["Windows", "泡泡攻击", "梦境冒险", "GMHub"],
+    tags: ["2D 休闲", "街机动作", "泡泡攻击", "GMHub"],
     externalUrl: "https://www.gmhub.com/game/6838",
     externalLabel: "GMHub 项目页",
-  },
-  {
-    id: "dar",
-    title: "达尔",
-    type: "2D 交互解谜",
-    category: "puzzle",
-    image: "assets/games/dar-cover.png",
-    screenshots: [
-      "assets/games/dar-shot-1.png",
-      "assets/games/dar-shot-2.png",
-      "assets/games/dar-shot-3.png",
+    links: [
+      {
+        label: "GMHub 项目页",
+        url: "https://www.gmhub.com/game/6838",
+      },
+      {
+        label: "B站展示视频",
+        url: "https://www.bilibili.com/video/BV1KswreREDT/",
+      },
     ],
-    summary:
-      "一款 2D 交互解谜类游戏，玩家将扮演主人公达尔，踏上寻找三颗宝石的冒险旅途。",
-    role: "待补充：你的具体策划职责",
-    duration: "2025 / BlackField",
-    deliverables: "GMHub 项目页、封面、3 张截图；谜题文档或流程图待补充。",
-    highlight: "待补充：谜题结构、交互规则、叙事推进或关卡设计亮点。",
-    tags: ["Windows", "2D 解谜", "冒险旅途", "GMHub"],
-    externalUrl: "https://www.gmhub.com/game/7774",
-    externalLabel: "GMHub 项目页",
   },
   {
     id: "hide-shadow",
     title: "藏好影子",
-    type: "影子对决玩法",
-    category: "combat",
+    type: "2D 联机对战射击",
+    category: "versus",
     image: "assets/games/hide-shadow-cover.png",
     screenshots: [
       "assets/games/hide-shadow-shot-1.png",
@@ -58,7 +47,7 @@ const projects = [
     duration: "2026 / BlackField",
     deliverables: "GMHub 项目页、封面、3 张截图；玩法规则或复盘待补充。",
     highlight: "待补充：影子判定、对抗节奏、可读性处理或原型验证亮点。",
-    tags: ["Windows", "影子机制", "对抗玩法", "GMHub"],
+    tags: ["2D 联机", "对战射击", "影子机制", "GMHub"],
     externalUrl: "https://www.gmhub.com/game/9184",
     externalLabel: "GMHub 项目页",
   },
@@ -85,12 +74,22 @@ const projects = [
     tags: ["2D 平台", "解谜", "GameJam", "TapTap"],
     externalUrl: "https://www.taptap.cn/app/779762?os=pc",
     externalLabel: "TapTap 商店页",
+    links: [
+      {
+        label: "TapTap 商店页",
+        url: "https://www.taptap.cn/app/779762?os=pc",
+      },
+      {
+        label: "B站展示视频",
+        url: "https://www.bilibili.com/video/BV1de1MBcEiF/",
+      },
+    ],
   },
   {
     id: "jiangdao",
     title: "匠道济民卷",
     type: "3D 冒险角色扮演",
-    category: "adventure",
+    category: "adventure-rpg",
     image: "assets/games/jiangdao-cover.jpg",
     screenshots: [
       "assets/games/jiangdao-shot-1.png",
@@ -114,7 +113,7 @@ const projects = [
     id: "aisling",
     title: "梦中之境 Aisling",
     type: "2D 剧情策略弹球",
-    category: "strategy",
+    category: "strategy-pinball",
     image: "assets/games/aisling-cover.png",
     screenshots: [
       "assets/games/aisling-cover.png",
@@ -135,20 +134,40 @@ const projects = [
     externalUrl: "https://www.bilibili.com/video/BV1VyzQYGE74",
     externalLabel: "B站展示视频",
   },
+  {
+    id: "dar",
+    title: "达尔",
+    type: "2D 交互解谜",
+    category: "puzzle",
+    image: "assets/games/dar-cover.png",
+    screenshots: [
+      "assets/games/dar-shot-1.png",
+      "assets/games/dar-shot-2.png",
+      "assets/games/dar-shot-3.png",
+    ],
+    summary:
+      "一款 2D 交互解谜类游戏，玩家将扮演主人公达尔，踏上寻找三颗宝石的冒险旅途。",
+    role: "待补充：你的具体策划职责",
+    duration: "2025 / BlackField",
+    deliverables: "GMHub 项目页、封面、3 张截图；谜题文档或流程图待补充。",
+    highlight: "待补充：谜题结构、交互规则、叙事推进或关卡设计亮点。",
+    tags: ["Windows", "2D 解谜", "冒险旅途", "GMHub"],
+    externalUrl: "https://www.gmhub.com/game/7774",
+    externalLabel: "GMHub 项目页",
+    links: [
+      {
+        label: "GMHub 项目页",
+        url: "https://www.gmhub.com/game/7774",
+      },
+      {
+        label: "B站展示视频",
+        url: "https://www.bilibili.com/video/BV1E83AzSEPQ/",
+      },
+    ],
+  },
 ];
 
 const breakdowns = [
-  {
-    id: "spotlight-gamejam-2025",
-    title: "2025聚光灯gamejam 副本",
-    summary:
-      "GameJam 相关文档，已转成站内 Markdown 文章，后续可继续替换标题与说明。",
-    tags: ["GameJam", "Markdown", "待改名"],
-    articleUrl: "assets/articles/spotlight-gamejam-2025.md",
-    docUrl: "assets/docs/spotlight-gamejam-2025.docx",
-    pdfUrl: "assets/docs/pdf/spotlight-gamejam-2025.pdf",
-    meta: "Markdown 文章 · 自动目录",
-  },
   {
     id: "slg-game-idea",
     title: "SLG游戏创意",
@@ -158,17 +177,7 @@ const breakdowns = [
     articleUrl: "assets/articles/slg-game-idea.md",
     docUrl: "assets/docs/slg-game-idea.docx",
     pdfUrl: "assets/docs/pdf/slg-game-idea.pdf",
-    meta: "Markdown 文章 · 自动目录",
-  },
-  {
-    id: "do-optimization-new-play",
-    title: "DO优化建议与新增玩法",
-    summary:
-      "围绕 DO 的优化建议与新增玩法思路，适合展示问题定位、改动方案和玩法补充。",
-    tags: ["优化建议", "新增玩法", "Markdown"],
-    articleUrl: "assets/articles/do-optimization-new-play.md",
-    docUrl: "assets/docs/do-optimization-new-play.docx",
-    pdfUrl: "assets/docs/pdf/do-optimization-new-play.pdf",
+    feishuUrl: "https://kcn07rbhyunv.feishu.cn/docx/QOtSd1hDbokXdRxyuCgcRbS3nfb",
     meta: "Markdown 文章 · 自动目录",
   },
   {
@@ -180,6 +189,7 @@ const breakdowns = [
     articleUrl: "assets/articles/do-breakdown.md",
     docUrl: "assets/docs/do-breakdown.docx",
     pdfUrl: "assets/docs/pdf/do-breakdown.pdf",
+    feishuUrl: "https://kcn07rbhyunv.feishu.cn/docx/SUMgd0kPFo7OTqxsISqc7l5Kn1g",
     meta: "Markdown 文章 · 自动目录",
   },
 ];
@@ -193,7 +203,7 @@ const dialogTitle = document.querySelector("#dialogTitle");
 const dialogSummary = document.querySelector("#dialogSummary");
 const dialogTags = document.querySelector("#dialogTags");
 const dialogShots = document.querySelector("#dialogShots");
-const dialogExternal = document.querySelector("#dialogExternal");
+const dialogLinks = document.querySelector("#dialogLinks");
 const closeButton = document.querySelector(".dialog-close");
 const articleView = document.querySelector("#articleView");
 const articleTitle = document.querySelector("#articleTitle");
@@ -277,6 +287,29 @@ function parseTable(lines) {
   `;
 }
 
+function getHeadingMeta(markdownLevel, headingText) {
+  const numbered = headingText.match(/^(\d+(?:[.．]\d+)*)(?:[.．]\s*|\s+)(.+)$/);
+  if (numbered) {
+    const depth = numbered[1].split(/[.．]/).length;
+    return {
+      includeInToc: true,
+      renderLevel: Math.min(depth + 1, 4),
+      tocLevel: Math.min(depth, 5),
+      tocNum: numbered[1],
+      tocText: numbered[2].trim(),
+    };
+  }
+
+  const isInlineNumberedNote = /^\d+[、）)]/.test(headingText);
+  return {
+    includeInToc: markdownLevel >= 2 && !isInlineNumberedNote,
+    renderLevel: markdownLevel,
+    tocLevel: Math.max(1, Math.min(markdownLevel - 1, 4)),
+    tocNum: "",
+    tocText: headingText,
+  };
+}
+
 function parseMarkdown(markdown, title) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const usedIds = new Set();
@@ -285,7 +318,6 @@ function parseMarkdown(markdown, title) {
   let index = 0;
   let skippedTitle = false;
   let skippedLeadTitle = false;
-  const counters = { h2: 0, h3: 0, h4: 0 };
 
   while (index < lines.length) {
     const line = lines[index];
@@ -317,37 +349,17 @@ function parseMarkdown(markdown, title) {
         index += 1;
         continue;
       }
+      const headingMeta = getHeadingMeta(level, headingText);
       const id = slugify(headingText, usedIds);
       const safeHeading = renderInlineMarkdown(headingText);
-      html.push(`<h${level} id="${id}">${safeHeading}</h${level}>`);
-      if (level >= 2) {
-        if (level === 2) {
-          counters.h2 += 1;
-          counters.h3 = 0;
-          counters.h4 = 0;
-        } else if (level === 3) {
-          counters.h3 += 1;
-          counters.h4 = 0;
-        } else if (level === 4) {
-          counters.h4 += 1;
-        }
-        let num;
-        if (level === 2) {
-          num = String(counters.h2);
-        } else if (level === 3) {
-          num = counters.h2 ? `${counters.h2}.${counters.h3}` : String(counters.h3);
-        } else {
-          if (counters.h2 && counters.h3) {
-            num = `${counters.h2}.${counters.h3}.${counters.h4}`;
-          } else if (counters.h2) {
-            num = `${counters.h2}.${counters.h4}`;
-          } else if (counters.h3) {
-            num = `${counters.h3}.${counters.h4}`;
-          } else {
-            num = String(counters.h4);
-          }
-        }
-        toc.push({ id, level, text: headingText, num });
+      html.push(`<h${headingMeta.renderLevel} id="${id}">${safeHeading}</h${headingMeta.renderLevel}>`);
+      if (headingMeta.includeInToc) {
+        toc.push({
+          id,
+          level: headingMeta.tocLevel,
+          text: headingMeta.tocText,
+          num: headingMeta.tocNum,
+        });
       }
       index += 1;
       continue;
@@ -478,14 +490,23 @@ function renderBreakdowns() {
             <p>${escapeHtml(item.summary)}</p>
           </div>
           <div class="breakdown-foot">
-            <div class="project-meta">
-              ${item.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
-            </div>
-            <div class="doc-meta">${escapeHtml(item.meta)}</div>
             <div class="doc-actions">
-              <button class="doc-link" type="button" data-article-id="${escapeHtml(item.id)}">
-                阅读文章
-              </button>
+              ${
+                item.feishuUrl
+                  ? `
+                    <a class="doc-link" href="${escapeHtml(safeUrl(item.feishuUrl))}" target="_blank" rel="noreferrer">
+                      飞书阅读
+                    </a>
+                    <button class="doc-secondary" type="button" data-article-id="${escapeHtml(item.id)}">
+                      站内阅读
+                    </button>
+                  `
+                  : `
+                    <button class="doc-link" type="button" data-article-id="${escapeHtml(item.id)}">
+                      阅读文章
+                    </button>
+                  `
+              }
               <a class="doc-download" href="${escapeHtml(item.docUrl)}" download>
                 DOCX
               </a>
@@ -506,7 +527,8 @@ function renderToc(toc) {
     .map(
       (item) => `
         <a class="toc-link toc-level-${item.level}" href="#${escapeHtml(item.id)}" data-target="${escapeHtml(item.id)}">
-          <span class="toc-num">${escapeHtml(item.num)}</span>${escapeHtml(item.text)}
+          ${item.num ? `<span class="toc-num">${escapeHtml(item.num)}</span>` : ""}
+          <span class="toc-text">${escapeHtml(item.text)}</span>
         </a>
       `,
     )
@@ -603,6 +625,21 @@ function setDialogImage(src) {
   dialogMedia.style.setProperty("--dialog-image", `url("${src}")`);
 }
 
+function getProjectLinks(project) {
+  if (Array.isArray(project.links) && project.links.length) {
+    return project.links;
+  }
+  if (project.externalUrl) {
+    return [
+      {
+        label: project.externalLabel || "项目链接",
+        url: project.externalUrl,
+      },
+    ];
+  }
+  return [];
+}
+
 function openProject(projectId) {
   const project = projects.find((item) => item.id === projectId);
   if (!project) return;
@@ -629,8 +666,20 @@ function openProject(projectId) {
       `,
     )
     .join("");
-  dialogExternal.href = project.externalUrl;
-  dialogExternal.textContent = project.externalLabel || "项目链接";
+  dialogLinks.innerHTML = getProjectLinks(project)
+    .map(
+      (link, index) => `
+        <a
+          class="button ${index === 0 ? "button-primary" : "button-outline"}"
+          href="${escapeHtml(safeUrl(link.url))}"
+          target="_blank"
+          rel="noreferrer"
+        >
+          ${escapeHtml(link.label || "项目链接")}
+        </a>
+      `,
+    )
+    .join("");
 
   dialog.showModal();
 }

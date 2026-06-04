@@ -8,9 +8,9 @@
       name="description"
       content="李志晟的游戏策划作品集：系统策划、关卡设计、玩法拆解案、项目经历与可交付文档。"
     />
-    <link rel="stylesheet" href="styles.css?v=26" />
-    <script defer src="article-data.js?v=26"></script>
-    <script defer src="script.js?v=26"></script>
+    <link rel="stylesheet" href="styles.css?v=41" />
+    <script defer src="article-data.js?v=41"></script>
+    <script defer src="script.js?v=41"></script>
   </head>
   <body>
     <header class="site-header">
@@ -61,17 +61,20 @@
           <button class="filter-button is-active" type="button" data-filter="all">
             全部
           </button>
+          <button class="filter-button" type="button" data-filter="casual-action">
+            休闲动作
+          </button>
+          <button class="filter-button" type="button" data-filter="versus">
+            联机对战
+          </button>
           <button class="filter-button" type="button" data-filter="puzzle">
             解谜
           </button>
-          <button class="filter-button" type="button" data-filter="combat">
-            战斗
+          <button class="filter-button" type="button" data-filter="adventure-rpg">
+            冒险RPG
           </button>
-          <button class="filter-button" type="button" data-filter="adventure">
-            冒险
-          </button>
-          <button class="filter-button" type="button" data-filter="strategy">
-            策略
+          <button class="filter-button" type="button" data-filter="strategy-pinball">
+            策略弹球
           </button>
         </div>
 
@@ -107,7 +110,6 @@
         <div>
           <p class="eyebrow">Contact</p>
           <h2>李志晟</h2>
-          <p>游戏策划方向：系统策划、关卡设计、玩法拆解、AI 策划工作流。</p>
           <div class="contact-meta" aria-label="联系方式">
             <span>邮箱：lzs13599067229@gmail.com</span>
             <span>微信：LZS200576</span>
@@ -137,11 +139,7 @@
           <p id="dialogSummary"></p>
           <div class="tag-row" id="dialogTags"></div>
           <div class="screenshot-strip" id="dialogShots" aria-label="项目截图"></div>
-          <div class="dialog-actions">
-            <a class="button button-primary" id="dialogExternal" href="#" target="_blank" rel="noreferrer">
-              项目链接
-            </a>
-          </div>
+          <div class="dialog-actions" id="dialogLinks"></div>
         </div>
       </div>
     </dialog>
