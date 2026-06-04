@@ -31,37 +31,6 @@ const projects = [
     ],
   },
   {
-    id: "hide-shadow",
-    title: "藏好影子",
-    type: "2D 联机对战射击",
-    category: "versus",
-    image: "assets/games/hide-shadow-cover.png",
-    screenshots: [
-      "assets/games/hide-shadow-shot-1.png",
-      "assets/games/hide-shadow-shot-2.jpg",
-      "assets/games/hide-shadow-shot-3.jpg",
-    ],
-    summary:
-      "影子小丑对决玩法：攻击对方影子可以造成伤害，玩家需要藏好自己的影子，同时寻找攻击对方影子的机会。",
-    role: "待补充：你的具体策划职责",
-    duration: "2026 / BlackField",
-    deliverables: "GMHub 项目页、封面、3 张截图；玩法规则或复盘待补充。",
-    highlight: "待补充：影子判定、对抗节奏、可读性处理或原型验证亮点。",
-    tags: ["2D 联机", "对战射击", "影子机制", "GMHub"],
-    externalUrl: "https://www.gmhub.com/game/9184",
-    externalLabel: "GMHub 项目页",
-    links: [
-      {
-        label: "GMHub 项目页",
-        url: "https://www.gmhub.com/game/9184",
-      },
-      {
-        label: "B站展示视频",
-        url: "https://www.bilibili.com/video/BV1SqfRBQEyj/",
-      },
-    ],
-  },
-  {
     id: "paper-knight",
     title: "纸面骑士 Nonstop",
     type: "2D 平台解谜",
@@ -92,6 +61,37 @@ const projects = [
       {
         label: "B站展示视频",
         url: "https://www.bilibili.com/video/BV1de1MBcEiF/",
+      },
+    ],
+  },
+  {
+    id: "hide-shadow",
+    title: "藏好影子",
+    type: "2D 联机对战射击",
+    category: "versus",
+    image: "assets/games/hide-shadow-cover.png",
+    screenshots: [
+      "assets/games/hide-shadow-shot-1.png",
+      "assets/games/hide-shadow-shot-2.jpg",
+      "assets/games/hide-shadow-shot-3.jpg",
+    ],
+    summary:
+      "影子小丑对决玩法：攻击对方影子可以造成伤害，玩家需要藏好自己的影子，同时寻找攻击对方影子的机会。",
+    role: "待补充：你的具体策划职责",
+    duration: "2026 / BlackField",
+    deliverables: "GMHub 项目页、封面、3 张截图；玩法规则或复盘待补充。",
+    highlight: "待补充：影子判定、对抗节奏、可读性处理或原型验证亮点。",
+    tags: ["2D 联机", "对战射击", "影子机制", "GMHub"],
+    externalUrl: "https://www.gmhub.com/game/9184",
+    externalLabel: "GMHub 项目页",
+    links: [
+      {
+        label: "GMHub 项目页",
+        url: "https://www.gmhub.com/game/9184",
+      },
+      {
+        label: "B站展示视频",
+        url: "https://www.bilibili.com/video/BV1SqfRBQEyj/",
       },
     ],
   },
