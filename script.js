@@ -182,7 +182,7 @@ const breakdowns = [
     id: "slg-game-idea",
     title: "SLG游戏创意",
     summary:
-      "SLG 游戏创意方向文章，适合后续扩展为创意案、系统案或玩法原型展示。",
+      "围绕 SLG 的核心循环、地图推进、资源经营与阶段目标展开，整理玩法创意与系统雏形。",
     tags: ["SLG", "创意案", "Markdown"],
     articleUrl: "assets/articles/slg-game-idea.md",
     docUrl: "assets/docs/slg-game-idea.docx",
@@ -194,7 +194,7 @@ const breakdowns = [
     id: "do-breakdown",
     title: "DO 拆解文档",
     summary:
-      "DO 相关拆解文章，适合放在作品集中作为系统分析、体验拆解或竞品研究材料。",
+      "以 DarkOrbit 为案例，拆解太空 MMO 的战斗、地图、养成、任务与 PVP/PVE 系统结构。",
     tags: ["系统拆解", "体验分析", "Markdown"],
     articleUrl: "assets/articles/do-breakdown.md",
     docUrl: "assets/docs/do-breakdown.docx",
